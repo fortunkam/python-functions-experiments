@@ -1,0 +1,29 @@
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "ratingJson",
+      "type": "table",
+      "tableName": "pyratings",
+      "take": "1",
+      "filter": "RowKey eq '{ratingId}'",
+      "connection": "RatingsStorageConnectionString",
+      "direction": "in"
+    },
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get"
+      ],
+      "route": "GetRating/{ratingId}"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    }
+  ]
+}
